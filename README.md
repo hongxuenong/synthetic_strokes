@@ -1,8 +1,8 @@
 ## Updates 2020.05.19
 New method for stroke creation.\
 Sample images:\
-![Image description](https://git.garena.com/xuenong.hong/synthetic-strokes-/blob/master/Test/Output/Images_with_strokes/0a0c62c3f6c4606adae355de1fd551d4-hflip_0.png)
-![Image description](https://git.garena.com/xuenong.hong/synthetic-strokes-/blob/master/Test/Output/Images_with_strokes/0a1fa0f5bacebba221186a115c461289-hflip_3.png)
+![Image description](https://github.com/hongxuenong/synthetic_strokes/blob/master/Test/Output/Images_with_strokes/0a0c62c3f6c4606adae355de1fd551d4-hflip_0.png)
+![Image description](https://github.com/hongxuenong/synthetic_strokes/blob/master/Test/Output/Images_with_strokes/0a0c62c3f6c4606adae355de1fd551d4-hflip_3.png)
 
 ## map_utils
 **Example usages**:\
