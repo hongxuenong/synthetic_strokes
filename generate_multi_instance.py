@@ -1,3 +1,6 @@
+'''
+Generate 4-instance synthetic training images with bursh inputs.
+'''
 import os
 import cv2
 import glob
@@ -25,15 +28,15 @@ def overlay_two_image(image, overlay, ignore_color=[0, 0, 0]):
 
 
 def main():
-    imglist = glob.glob('synthetic/DUTS-TR/DUTS-TR-Image/*.jpg')
+    imglist = glob.glob('data/DUTS-TR/DUTS-TR-Image/*.jpg')
     print(len(imglist))
     for collection in ["train", "test"]:
         if (collection == "train"):
             num = 5000
         else:
             num = 100
-        for i in range(0, num+1):
-            print('{} out of {}'.format(i+1, num))
+        for i in range(0, num + 1):
+            print('{} out of {}'.format(i + 1, num))
             indexes = np.random.randint(0, len(imglist), 4)
 
             c_img = np.zeros((1000, 1000, 4))
@@ -165,22 +168,24 @@ def main():
                 _, bg_mask = cv2.threshold(bg_map_img, 20, 255,
                                            cv2.THRESH_BINARY_INV)
 
-                dismap_fg = cv2.distanceTransform(fg_mask, cv2.DIST_L2,
-                                                  cv2.DIST_MASK_PRECISE)
+                dismap_fg = fg_mask
+                dismap_bg = bg_mask
+                # dismap_fg = cv2.distanceTransform(fg_mask, cv2.DIST_L2,
+                #                                   cv2.DIST_MASK_PRECISE)
 
-                dismap_bg = cv2.distanceTransform(bg_mask, cv2.DIST_L2,
-                                                  cv2.DIST_MASK_PRECISE)
+                # dismap_bg = cv2.distanceTransform(bg_mask, cv2.DIST_L2,
+                #                                   cv2.DIST_MASK_PRECISE)
                 cv2.imwrite(
-                    'multi_instance/' + collection + '/Images_with_strokes/' +
-                    str(i) + '.png', image)
+                    'multi_instance_v2/' + collection +
+                    '/Images_with_strokes/' + str(i) + '.png', image)
                 cv2.imwrite(
-                    'multi_instance/' + collection + '/InteractionMaps/fg/' +
-                    str(i) + '.png', dismap_fg)
+                    'multi_instance_v2/' + collection +
+                    '/InteractionMaps/fg/' + str(i) + '.png', dismap_fg)
                 cv2.imwrite(
-                    'multi_instance/' + collection + '/InteractionMaps/bg/' +
-                    str(i) + '.png', dismap_bg)
+                    'multi_instance_v2/' + collection +
+                    '/InteractionMaps/bg/' + str(i) + '.png', dismap_bg)
                 cv2.imwrite(
-                    'multi_instance/' + collection + '/label/' + str(i) +
+                    'multi_instance_v2/' + collection + '/label/' + str(i) +
                     '.png', mask)
 
 
